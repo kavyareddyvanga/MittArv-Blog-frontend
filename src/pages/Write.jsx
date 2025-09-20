@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import ReactQuill from "react-quill-new";
 import "react-quill-new/dist/quill.snow.css";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../axios";
 import moment from "moment";
 
 const Write = () => {
@@ -35,7 +35,7 @@ const Write = () => {
     try {
       const formData = new FormData();
       formData.append("file", file);
-      const res = await axios.post("/api/upload", formData, {
+      const res = await api.post("/upload", formData, {
         headers: { "Content-Type": "multipart/form-data" },
         withCredentials: true,
       });
@@ -63,9 +63,9 @@ const Write = () => {
       };
 
       if (postState?.id) {
-        await axios.put(`/api/posts/${postState.id}`, postData, { withCredentials: true });
+        await api.put(`/posts/${postState.id}`, postData, { withCredentials: true });
       } else {
-        await axios.post("/api/posts/", postData, { withCredentials: true });
+        await api.post("/posts/", postData, { withCredentials: true });
       }
 
       navigate("/");
