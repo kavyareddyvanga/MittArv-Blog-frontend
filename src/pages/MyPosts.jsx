@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { AuthContext } from "../context/authContext";
-import axios from "axios";
+import api from "../axios";
 import { Link, useNavigate } from "react-router-dom";
 
 const MyPosts = () => {
@@ -16,7 +16,7 @@ const MyPosts = () => {
 
     const fetchMyPosts = async () => {
       try {
-        const res = await axios.get("/api/posts/myposts", { withCredentials: true });
+        const res = await api.get("/posts/myposts", { withCredentials: true });
         setPosts(res.data);
       } catch (err) {
         console.error(err);
