@@ -1,6 +1,6 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import api from "../axios";  // use your custom axios instance
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
@@ -9,15 +9,12 @@ const Home = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`/api/posts${cat}`);
+        const res = await api.get(`/posts${cat}`); // ✅ using api
         console.log("API Response:", res.data);
 
-        // Ensure posts is always an array
         setPosts(Array.isArray(res.data) ? res.data : []);
-
-   
       } catch (err) {
-        console.log(err);
+        console.error("Error fetching posts:", err);
       }
     };
 
@@ -25,20 +22,20 @@ const Home = () => {
   }, [cat]);
 
   const getText = (html) => {
-    if (!html) return ""; // handle undefined or null
+    if (!html) return "";
     const doc = new DOMParser().parseFromString(html, "text/html");
     return doc.body.textContent;
   };
 
   if (!posts.length) {
-    return <p>No posts found</p>; // handle empty array
+    return <p>No posts found</p>;
   }
 
   return (
     <div className="home">
       <div className="posts">
         {posts.map((post) => (
-          <div className="post" key={post.id || Math.random()}>
+          <div className="post" key={post.id}>
             <div className="img">
               {post.img ? (
                 <img src={post.img} alt={post.title || "Post Image"} />
@@ -47,7 +44,7 @@ const Home = () => {
               )}
             </div>
             <div className="content">
-              <Link className="link" to={`/post/${post.id || ""}`}>
+              <Link className="link" to={`/post/${post.id}`}>
                 <h1>{post.title || "Untitled Post"}</h1>
               </Link>
               <p className="post-desc">{getText(post.desc)}</p>
