@@ -1,4 +1,4 @@
-import axios from "../axios";
+import api from "../axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -9,7 +9,7 @@ const Menu = ({ cat, currentPostId }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await api.get(`/api/posts/?cat=${cat}`);
+        const res = await api.get(`/posts/?cat=${cat}`);
         console.log("API Response:", res.data);
         const filteredPosts = res.data.filter((post) => post.id !== currentPostId);
         setPosts(filteredPosts);
