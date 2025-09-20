@@ -13,8 +13,9 @@ const Home = () => {
         console.log("API Response:", res.data);
 
         // Ensure posts is always an array
-        
-        setPosts(res.data.posts);
+        setPosts(Array.isArray(res.data) ? res.data : []);
+
+   
       } catch (err) {
         console.log(err);
       }
