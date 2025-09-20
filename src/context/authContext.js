@@ -1,50 +1,5 @@
-// import { createContext, useState } from "react";
-// import axios from "axios";
-
-// export const AuthContext = createContext();
-
-// export const AuthContextProvider = ({ children }) => {
-//   const storedUser = sessionStorage.getItem("user");
-
-//   const [currentUser, setCurrentUser] = useState(() => {
-//     try {
-//       return storedUser && storedUser !== "undefined" ? JSON.parse(storedUser) : null;
-//     } catch {
-//       return null;
-//     }
-//   });
-
-//   const login = async (inputs) => {
-//     try {
-//       const res = await axios.post("/api/auth/login", inputs, { withCredentials: true });
-//       if (res.data) {
-//         setCurrentUser(res.data);
-//         sessionStorage.setItem("user", JSON.stringify(res.data));
-//       }
-//       return res.data;
-//     } catch (err) {
-//       throw err;
-//     }
-//   };
-
-//   const logout = async () => {
-//     try {
-//       await axios.post("/api/auth/logout", {}, { withCredentials: true });
-//       setCurrentUser(null);
-//       sessionStorage.removeItem("user");
-//     } catch (err) {
-//       console.error("Logout failed:", err);
-//     }
-//   };
-
-//   return (
-//     <AuthContext.Provider value={{ currentUser, login, logout }}>
-//       {children}
-//     </AuthContext.Provider>
-//   );
-// };
 import { createContext, useEffect, useState } from "react";
-import axios from "axios";
+import api from "../axios";  // our custom axios instance with baseURL
 
 export const AuthContext = createContext();
 
@@ -54,8 +9,7 @@ export const AuthContextProvider = ({ children }) => {
   );
 
   const login = async (inputs) => {
-    const res = await axios.post("/api/auth/login", inputs);
-    // ensure we save only user data, not axios wrapper
+    const res = await api.post("/auth/login", inputs); 
     const user = res.data;
     setCurrentUser(user);
     sessionStorage.setItem("user", JSON.stringify(user));
@@ -63,7 +17,7 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   const logout = async () => {
-    await axios.post("/api/auth/logout");
+    await api.post("/auth/logout"); 
     setCurrentUser(null);
     sessionStorage.removeItem("user");
   };
