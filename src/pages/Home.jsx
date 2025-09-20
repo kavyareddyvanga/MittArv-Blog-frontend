@@ -12,7 +12,7 @@ const Home=()=>{
       try{
         const res=await axios.get(`/api/posts${cat}`)
         console.log("API Response:", res.data);
-        sconst postsArray = Array.isArray(res.data) ? res.data : Object.values(res.data);
+        const postsArray = Array.isArray(res.data) ? res.data : Object.values(res.data);
         setPosts(postsArray);
       }
       catch(err){
