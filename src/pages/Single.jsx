@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import Menu from "./Menu";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
+import api from "../axios";
 import moment from "moment";
 import { AuthContext } from "../context/authContext";
 
@@ -15,7 +15,7 @@ const Single = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`/api/posts/${postId}`);
+        const res = await api.get(`/posts/${postId}`);
         setPost(res.data);
       } catch (err) {
         console.log(err);
@@ -26,7 +26,7 @@ const Single = () => {
 
   const handleDelete = async () => {
     try {
-      await axios.delete(`/api/posts/${postId}`, { withCredentials: true });
+      await api.delete(`/posts/${postId}`, { withCredentials: true });
       navigate("/");
     } catch (err) {
       console.log(err);
