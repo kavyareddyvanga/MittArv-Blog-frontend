@@ -1,70 +1,93 @@
-# Getting Started with Create React App
+Blogs – Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+🚀 Live Demo - https://mitt-arv-blog-frontend.vercel.app/
 
-## Available Scripts
+Frontend of the Blogs Platform built with React, SCSS, and Axios.
+Handles the user interface, blog viewing, and interaction with the backend API.
 
-In the project directory, you can run:
+Features
 
-### `npm start`
+Signup/Login with JWT authentication
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+View all blogs or individual posts
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Create, edit, delete own posts
 
-### `npm test`
+Upload images via Cloudinary
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+"My Posts" page for authored blogs
 
-### `npm run build`
+Responsive UI for desktop and mobile
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Tech Stack
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+React
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+SCSS
 
-### `npm run eject`
+React Router
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Axios
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Setup & Run
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Install dependencies:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+cd frontend
+npm install
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Start development server:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+npm run dev
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Open in browser: http://localhost:5173
 
-### Analyzing the Bundle Size
+Configure API endpoint in axios.js:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+import axios from "axios";
 
-### Making a Progressive Web App
+const api = axios.create({
+  baseURL: "http://localhost:5000/api", // or production backend URL
+  withCredentials: true
+});
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+export default api;
 
-### Advanced Configuration
+Project Structure
+frontend/
+├── public/                   # Static assets
+├── src/
+│   ├── components/           # Reusable UI components
+│   ├── pages/                # Page components
+│   ├── context/              # State management
+│   ├── axios.js              # Axios instance for API calls
+│   └── App.jsx               # Main React app
+├── package.json
+└── README.md
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+Usage
 
-### Deployment
+Sign up or log in
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Browse blogs or navigate to individual posts
 
-### `npm run build` fails to minify
+Create, edit, or delete your posts
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Upload images with blog posts
+
+Access “My Posts” for authored content
+
+Deployment
+
+Frontend hosted on Vercel
+
+Build the project:
+
+npm run build
+
+
+Set environment variable in Vercel dashboard:
+
+VITE_API_URL=https://backend-mittarv.onrender.com/api
