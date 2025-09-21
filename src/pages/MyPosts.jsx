@@ -45,15 +45,17 @@ const MyPosts = () => {
                 {post.img ? <img src={post.img} alt={post.title} /> : <div>No Image</div>}
               </div>
               <div className="content">
-                <Link className="link" to={`/post/${post.id}`}>
-                  <h1>{post.title}</h1>
-                </Link>
+                
+                <h1>{post.title}</h1>
+                
                 <p className="post-desc">
                   {getText(post.desc).length > 200
                     ? getText(post.desc).substring(0, 200) + "..."
                     : getText(post.desc)}
                 </p>
-                <button className="read">Read More</button>
+                <Link className="link" to={`/post/${post.id}`}>
+                  <button className="read">Read More</button>
+                </Link>
               </div>
             </div>
           ))}
