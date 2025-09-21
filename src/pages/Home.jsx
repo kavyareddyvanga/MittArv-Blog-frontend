@@ -65,7 +65,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import api from "../axios";  // your custom axios instance
-import './Home.css'; // optional, for styling the search bar
+
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
