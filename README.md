@@ -1,16 +1,18 @@
 # Blogs – Frontend
+🚀 Live Demo: [https://mitt-arv-blog-frontend.vercel.app/](https://mitt-arv-blog-frontend.vercel.app/)  
 
-🚀 Live Demo: [https://mitt-arv-blog-frontend.vercel.app/](https://mitt-arv-blog-frontend.vercel.app/)
-🛠️ Live API (Backend): [https://your-backend-url.com](https://backend-mittarv.onrender.com/api)
+🛠️ Live API (Backend): [https://backend-mittarv.onrender.com/api](https://backend-mittarv.onrender.com/api)
+
 
 Frontend of the Blogs Platform built with **React, SCSS, and Axios**.  
 Handles the user interface, blog viewing, and interaction with the backend API.
 
 ## Repositories
-- **Frontend:** [Blog Frontend Repository](https://github.com/your-username/blog-frontend-repo)
-- **Backend:** [Blog Backend Repository](https://github.com/your-username/blog-backend-repo)
+- **Frontend:** [Blog Frontend Repository](https://github.com/kavyareddyvanga/MittArv-Blog-frontend)
+- **Backend:** [Blog Backend Repository](https://github.com/kavyareddyvanga/backend)
 
 ---
+
 
 ## Features
 - Signup/Login with JWT authentication
